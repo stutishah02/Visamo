@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Payment Successful";
+    Layout = "~/Views/Shared/resident.cshtml";
+}
+
+<div style="text-align: center; margin-top: 50px;">
+    <h2 style="color: #28a745;">Payment Successful</h2>
+    <h1 style="color: #333;">Thank you for your payment</h1>
+    <p style="font-size: 18px; color: #555;">
+        Your payment has been processed successfully. You will be redirected shortly.
+    </p>
+
+    <a href="@Url.Action("ViewMaintenance", "Resident")" class="btn btn-primary">Back to Maintenance</a>
+</div>
+

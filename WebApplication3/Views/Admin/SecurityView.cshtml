@@ -1,0 +1,87 @@
+﻿@model IEnumerable<WebApplication3.Models.Users>
+
+@{
+    ViewData["Title"] = "SecurityView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-4 pb-2 align-items-center">
+                <h5 class="mb-0">Security List</h5><br/>
+                <a asp-action="SecurityCreate" class="btn btn-primary">Add Security</a>
+            </div>
+            <div class="table-responsive pb-4">
+                <table id="all-student" class="table table-striped table-bordered border text-nowrap align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.First().Photo)</th>
+
+                            <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Contactno)</th>
+
+
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <img class="rounded-circle" src="~/uploads/@item.Photo" width="50px" height="50px" alt="Security Photo" />
+                                </td>
+
+                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Contactno)</td>
+
+
+                                <td>
+                                    <a asp-action="SecurityEdit" asp-route-id="@item.Uid" class="text-primary">
+                                        <i class="ti ti-pencil fs-7"></i>
+                                    </a>
+
+                                    <a asp-action="Deletesecurity" asp-route-id="@item.Uid" onclick="return confirm('Are you sure you want to delete this Security?')" class="text-danger ms-2">
+                                        <i class="ti ti-trash fs-7"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Enhance table design */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .table thead th {
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    .table td,
+    .table th {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .btn {
+        text-transform: uppercase;
+        font-size: 0.875rem;
+    }
+
+    .container h1 {
+        color: #333;
+    }
+</style>
